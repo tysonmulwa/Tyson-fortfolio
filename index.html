@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Tyson Mulwa — Software Engineer &amp; Product Builder</title>
+  <meta name="description" content="Portfolio of Tyson Mulwa — six shipped products across e-commerce, dating, AI security, fintech, escrow marketplaces, and AI marketing.">
+  <meta name="author" content="Tyson Mulwa">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#050708" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#DDDFD9" media="(prefers-color-scheme: light)">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tyson Mulwa">
+  <meta property="og:title" content="Tyson Mulwa — Software Engineer &amp; Product Builder">
+  <meta property="og:description" content="Six shipped products across e-commerce, dating, AI security, fintech, marketplaces, and AI marketing — full details per project.">
+  <meta property="og:url" content="https://tyson-fortfolio.vercel.app/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tyson Mulwa — Software Engineer &amp; Product Builder">
+  <meta name="twitter:description" content="Six shipped products across e-commerce, dating, AI security, fintech, marketplaces, and AI marketing.">
+</head>
+<body>
+<style>
+  /* ============================================================
+     Tyson Mulwa — Portfolio
+     Global "glitter" node-field behind everything · one uniform
+     font · liquid-glass floating cards (iOS-style, clear like ice).
+     ============================================================ */
+
+  :root {
+    /* ONE font, used everywhere for a uniform, legible look */
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    /* light theme (default) — cool paper, NOT cream */
+    --ground:      #DDDFD9;
+    --surface:     #E8EAE4;
+    --text:        #14181A;
+    --text-dim:    #4B5854;
+    --text-faint:  #7C867F;
+    --line:        rgba(18,26,24,0.14);
+    --line-strong: rgba(18,26,24,0.24);
+    --accent:      #A05F00;
+    --accent-fill: #E7A93B;
+    --accent-weak: rgba(160,95,0,0.10);
+    --live:        #17805A;
+    --beta:        #A05F00;
+    --oss:         #266C86;
+    --node-a:      #B47A18;
+    --node-b:      #1E8E76;
+    /* liquid glass */
+    --glass-bg:    rgba(240,242,236,0.13);
+    --glass-brd:   rgba(18,26,24,0.16);
+    --glass-hi:    rgba(255,255,255,0.60);
+    --glass-sheen: rgba(255,255,255,0.20);
+    --glass-shadow:0 30px 60px -34px rgba(18,26,24,0.55);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground:      #050708;
+      --surface:     #0C1113;
+      --text:        #ECF1EF;
+      --text-dim:    #A2AEA9;
+      --text-faint:  #6C7974;
+      --line:        rgba(255,255,255,0.11);
+      --line-strong: rgba(255,255,255,0.22);
+      --accent:      #F2C14E;
+      --accent-fill: #F2C14E;
+      --accent-weak: rgba(242,193,78,0.14);
+      --live:        #5BD0A0;
+      --beta:        #F2C14E;
+      --oss:         #74C4DC;
+      --node-a:      #F2C14E;
+      --node-b:      #5BD0A0;
+      --glass-bg:    rgba(11,16,19,0.07);
+      --glass-brd:   rgba(255,255,255,0.17);
+      --glass-hi:    rgba(255,255,255,0.09);
+      --glass-sheen: rgba(255,255,255,0.05);
+      --glass-shadow:0 34px 64px -34px rgba(0,0,0,0.80);
+    }
+  }
+
+  :root[data-theme="light"] {
+    --ground:#DDDFD9; --surface:#E8EAE4; --text:#14181A; --text-dim:#4B5854;
+    --text-faint:#7C867F; --line:rgba(18,26,24,0.14); --line-strong:rgba(18,26,24,0.24);
+    --accent:#A05F00; --accent-fill:#E7A93B; --accent-weak:rgba(160,95,0,0.10);
+    --live:#17805A; --beta:#A05F00; --oss:#266C86; --node-a:#B47A18; --node-b:#1E8E76;
+    --glass-bg:rgba(240,242,236,0.13); --glass-brd:rgba(18,26,24,0.16);
+    --glass-hi:rgba(255,255,255,0.60); --glass-sheen:rgba(255,255,255,0.20);
+    --glass-shadow:0 30px 60px -34px rgba(18,26,24,0.55);
+  }
+  :root[data-theme="dark"] {
+    --ground:#050708; --surface:#0C1113; --text:#ECF1EF; --text-dim:#A2AEA9;
+    --text-faint:#6C7974; --line:rgba(255,255,255,0.11); --line-strong:rgba(255,255,255,0.22);
+    --accent:#F2C14E; --accent-fill:#F2C14E; --accent-weak:rgba(242,193,78,0.14);
+    --live:#5BD0A0; --beta:#F2C14E; --oss:#74C4DC; --node-a:#F2C14E; --node-b:#5BD0A0;
+    --glass-bg:rgba(11,16,19,0.07); --glass-brd:rgba(255,255,255,0.17);
+    --glass-hi:rgba(255,255,255,0.09); --glass-sheen:rgba(255,255,255,0.05);
+    --glass-shadow:0 34px 64px -34px rgba(0,0,0,0.80);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* global glitter field — fixed behind everything, shows through glass */
+  .bg-net {
+    position: fixed; inset: 0; width: 100vw; height: 100vh;
+    z-index: 0; pointer-events: none;
+  }
+  /* keep all real content above the field */
+  .nav, .hero, .metrics, .band, .contact, .foot { position: relative; z-index: 1; }
+
+  .wrap { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+  .eyebrow {
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--accent); margin: 0;
+  }
+
+  /* ---------- liquid glass utility ---------- */
+  .glass {
+    background:
+      linear-gradient(180deg, var(--glass-sheen), transparent 44%),
+      var(--glass-bg);
+    -webkit-backdrop-filter: blur(9px) saturate(135%);
+    backdrop-filter: blur(9px) saturate(135%);
+    border: 1px solid var(--glass-brd);
+    box-shadow: inset 0 1px 0 var(--glass-hi), var(--glass-shadow);
+  }
+
+  /* ---------- nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    -webkit-backdrop-filter: saturate(150%) blur(16px);
+    backdrop-filter: saturate(150%) blur(16px);
+    background: color-mix(in srgb, var(--ground) 66%, transparent);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .brand { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.01em; }
+  .monogram {
+    display: grid; place-items: center; width: 30px; height: 30px;
+    border: 1px solid var(--line-strong); border-radius: 8px;
+    font-weight: 800; font-size: 0.85rem; letter-spacing: -0.03em; color: var(--accent);
+  }
+  .nav-links { display: flex; align-items: center; gap: 26px; }
+  .nav-links a { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); transition: color .18s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { display:flex; align-items:center; gap:16px; }
+  .theme-btn {
+    display: grid; place-items: center; width: 34px; height: 34px;
+    background: transparent; border: 1px solid var(--line-strong); border-radius: 9px;
+    color: var(--text); cursor: pointer; transition: border-color .18s, background .18s;
+  }
+  .theme-btn:hover { border-color: var(--accent); background: var(--accent-weak); }
+  .theme-btn svg { width: 16px; height: 16px; }
+  @media (max-width: 640px) { .nav-links a:not(.nav-avail) { display: none; } }
+
+  .avail { display:inline-flex; align-items:center; gap:8px; font-size:0.78rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-dim); }
+  .dot { width:8px; height:8px; border-radius:50%; background: var(--live); animation: pulse 2.6s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--live) 55%,transparent);} 70%{box-shadow:0 0 0 8px transparent;} 100%{box-shadow:0 0 0 0 transparent;} }
+  @media (prefers-reduced-motion: reduce){ .dot{ animation:none; } }
+
+  /* ---------- hero ---------- */
+  .hero { border-bottom: 1px solid var(--line); }
+  .hero-inner { padding: clamp(60px, 12vh, 132px) 0 clamp(52px, 9vh, 104px); }
+  .hero h1 {
+    font-weight: 800;
+    font-size: clamp(2.1rem, 5.6vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+    margin: 18px 0 0;
+    max-width: 17ch;
+    color: var(--text);
+  }
+  .hero .lead {
+    margin: 24px 0 0; max-width: 56ch;
+    font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+    color: var(--text); line-height: 1.62;
+  }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.9rem; font-weight: 600; letter-spacing: 0.01em;
+    padding: 13px 22px; border-radius: 11px; cursor: pointer;
+    border: 1px solid transparent; transition: transform .16s ease, background .18s, border-color .18s, color .18s, box-shadow .18s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--accent-fill); color: #191300; border-color: var(--accent-fill); }
+  .btn-primary:hover { box-shadow: 0 14px 32px -12px color-mix(in srgb, var(--accent-fill) 70%, transparent); }
+  .btn-ghost { color: var(--text); border-color: var(--line-strong); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-wa { background: #25D366; color: #06251A; border-color: #25D366; }
+  .btn-wa:hover { box-shadow: 0 14px 32px -12px rgba(37,211,102,0.6); }
+  .btn-wa svg { width: 18px; height: 18px; }
+  .btn .arw { transition: transform .16s ease; }
+  .btn:hover .arw { transform: translate(2px,-2px); }
+
+  /* floating WhatsApp */
+  .wa-fab {
+    position: fixed; right: clamp(16px,3vw,26px); bottom: clamp(16px,3vw,26px);
+    z-index: 60; display: grid; place-items: center;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25D366; color: #fff;
+    box-shadow: 0 10px 26px -6px rgba(37,211,102,0.55), 0 2px 6px rgba(0,0,0,0.3);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .wa-fab svg { width: 28px; height: 28px; }
+  .wa-fab:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 16px 34px -8px rgba(37,211,102,0.7), 0 2px 6px rgba(0,0,0,0.3); }
+  .wa-fab::after {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(37,211,102,0.5); animation: waPulse 2.8s infinite;
+  }
+  @keyframes waPulse { 0%{box-shadow:0 0 0 0 rgba(37,211,102,0.45);} 70%{box-shadow:0 0 0 16px rgba(37,211,102,0);} 100%{box-shadow:0 0 0 0 rgba(37,211,102,0);} }
+  @media (prefers-reduced-motion: reduce){ .wa-fab::after{ animation:none; } .wa-fab:hover{ transform:none; } }
+
+  /* ---------- metrics (floating glass bar) ---------- */
+  .metrics { padding: clamp(26px, 5vw, 46px) 0; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-radius: 20px; overflow: hidden; }
+  .metric { padding: 26px clamp(14px,2.4vw,28px); border-left: 1px solid var(--line); }
+  .metric:first-child { border-left: none; }
+  .metric .num { font-weight: 800; font-size: clamp(1.9rem, 4.2vw, 2.9rem); letter-spacing: -0.03em; line-height: 1; }
+  .metric .lbl { font-size: 0.76rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-top: 10px; }
+  @media (max-width: 680px){
+    .metrics-grid{ grid-template-columns: repeat(2,1fr);}
+    .metric:nth-child(3){border-left:none;}
+    .metric:nth-child(n+3){border-top:1px solid var(--line);}
+  }
+
+  /* ---------- section frame ---------- */
+  .band { padding: clamp(60px, 10vh, 112px) 0; }
+  .sec-head { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom: 44px; }
+  .sec-head h2 { font-weight: 800; font-size: clamp(1.7rem, 3.6vw, 2.4rem); letter-spacing: -0.025em; margin: 10px 0 0; text-wrap: balance; }
+  .sec-head p { margin: 12px 0 0; color: var(--text-dim); max-width: 46ch; }
+  .sec-index { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; color: var(--text-faint); text-transform: uppercase; white-space: nowrap; }
+
+  /* ---------- project records (liquid glass) ---------- */
+  .records { display: flex; flex-direction: column; gap: 26px; }
+  .rec {
+    position: relative; border-radius: 22px; padding: clamp(22px, 3vw, 34px);
+    transition: transform .24s ease, box-shadow .24s, border-color .24s;
+  }
+  .rec::before {
+    content: ""; position: absolute; left: 0; top: 24px; bottom: 24px; width: 3px;
+    border-radius: 3px; background: var(--rec-accent, var(--accent));
+    opacity: 0; transition: opacity .24s;
+  }
+  .rec:hover { transform: translateY(-5px); border-color: color-mix(in srgb, var(--rec-accent, var(--accent)) 45%, var(--glass-brd)); }
+  .rec:hover::before { opacity: .95; }
+
+  .rec-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .rec-idx { font-size: 0.85rem; font-weight: 700; color: var(--text-faint); letter-spacing: 0.06em; }
+  .rec-title { font-weight: 800; font-size: clamp(1.5rem, 3vw, 2.05rem); letter-spacing: -0.025em; line-height: 1.05; margin: 0; }
+  .rec-cat { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
+  .rec-status { margin-left: auto; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 6px 13px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap;
+  }
+  .pill::before { content:""; width:7px; height:7px; border-radius:50%; background: currentColor; }
+  .pill.live { color: var(--live); }
+  .pill.beta { color: var(--beta); }
+  .pill.oss  { color: var(--oss); }
+
+  .rec-body { display: grid; grid-template-columns: 1.05fr 1.2fr; gap: clamp(24px, 4vw, 52px); margin-top: 26px; }
+  @media (max-width: 780px){ .rec-body{ grid-template-columns: 1fr; gap: 26px; } }
+
+  .rec-overview p { margin: 0; color: var(--text); font-size: 1.04rem; line-height: 1.62; }
+  .rec-role { margin-top: 20px; font-size: 0.86rem; color: var(--text-dim); letter-spacing: 0.01em; }
+  .rec-role b { color: var(--text); font-weight: 700; }
+  .rec-link {
+    display: inline-flex; align-items: center; gap: 9px; margin-top: 22px;
+    font-size: 0.9rem; font-weight: 600; color: var(--accent);
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    padding-bottom: 2px; transition: gap .16s, border-color .18s;
+  }
+  .rec-link:hover { gap: 13px; border-color: var(--accent); }
+  .rec-link.disabled { color: var(--text-faint); border-color: transparent; cursor: default; }
+  .rec-link.disabled:hover { gap: 9px; }
+
+  .feat-h { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--text-faint); margin: 0 0 14px; }
+  .feats { list-style: none; margin: 0 0 22px; padding: 0; display: grid; gap: 10px; }
+  .feats li { position: relative; padding-left: 22px; font-size: 0.97rem; color: var(--text-dim); line-height: 1.5; }
+  .feats li::before {
+    content: ""; position: absolute; left: 0; top: 8px; width: 8px; height: 8px;
+    border: 1.5px solid var(--rec-accent, var(--accent)); border-radius: 2px; transform: rotate(45deg);
+  }
+  .stack { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-size: 0.78rem; font-weight: 500; color: var(--text-dim);
+    padding: 5px 11px; border: 1px solid var(--glass-brd); border-radius: 8px;
+    background: color-mix(in srgb, var(--surface) 40%, transparent);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  }
+
+  /* ---------- approach (glass) ---------- */
+  .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 800px){ .approach-grid{ grid-template-columns: 1fr; } }
+  .ap { border-radius: 18px; padding: 28px; }
+  .ap .n { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; color: var(--accent); }
+  .ap h3 { font-weight: 800; font-size: 1.26rem; letter-spacing: -0.02em; margin: 14px 0 10px; }
+  .ap p { margin: 0; color: var(--text-dim); font-size: 0.97rem; line-height: 1.6; }
+
+  /* ---------- contact ---------- */
+  .contact { border-top: 1px solid var(--line); }
+  .contact-inner { padding: clamp(60px, 11vh, 122px) 0; }
+  .contact h2 { font-weight: 800; font-size: clamp(2rem, 5vw, 3.6rem); letter-spacing: -0.035em; line-height: 1.02; margin: 16px 0 0; text-wrap: balance; }
+  .contact h2 .hl { color: var(--accent); }
+  .contact p { color: var(--text-dim); margin: 22px 0 0; max-width: 48ch; font-size: 1.06rem; }
+  .contact-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+
+  /* ---------- footer ---------- */
+  .foot { border-top: 1px solid var(--line); }
+  .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; padding: 26px 0; font-size: 0.82rem; font-weight: 500; color: var(--text-faint); }
+  .foot a { color: var(--text-dim); }
+  .foot a:hover { color: var(--accent); }
+  .to-top { display:inline-flex; align-items:center; gap:8px; }
+
+  /* ---------- reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+</style>
+
+<!-- global glitter field -->
+<canvas class="bg-net" id="net" aria-hidden="true"></canvas>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Tyson Mulwa — home">
+      <span class="monogram">TM</span>
+      <span>Tyson Mulwa</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+      <span class="avail nav-avail"><span class="dot"></span>Available for work</span>
+    </nav>
+    <div class="nav-cta">
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme" title="Toggle theme">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="eyebrow">Tyson Mulwa — Software Engineer</p>
+    <h1>I ship whole products, not prototypes.</h1>
+    <p class="lead">
+      Six builds across e-commerce, dating, AI security, fintech, escrow marketplaces,
+      and AI marketing — designed, engineered end-to-end, and put in front of real users.
+      Full-stack, with AI where it actually earns its place.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#work">View the work <span class="arw">↗</span></a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METRICS ================= -->
+<section class="metrics">
+  <div class="wrap">
+    <div class="metrics-grid glass">
+      <div class="metric"><div class="num">6</div><div class="lbl">Products shipped</div></div>
+      <div class="metric"><div class="num">6</div><div class="lbl">Industries spanned</div></div>
+      <div class="metric"><div class="num">3</div><div class="lbl">Live in production</div></div>
+      <div class="metric"><div class="num">2</div><div class="lbl">Open source</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section class="band" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="eyebrow">Selected work</p>
+        <h2>Six products. Six industries.</h2>
+        <p>Full build details for everything I've designed and shipped — what it does, how it's built, and where it lives.</p>
+      </div>
+      <div class="sec-index">06 / RECORDS</div>
+    </div>
+
+    <div class="records">
+
+      <!-- 01 Mjini Collection -->
+      <article class="rec glass reveal" style="--rec-accent: var(--live);">
+        <div class="rec-head">
+          <span class="rec-idx">01</span>
+          <div>
+            <h3 class="rec-title">Mjini Collection</h3>
+            <span class="rec-cat">E-commerce</span>
+          </div>
+          <span class="rec-status"><span class="pill live">Live</span></span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-overview">
+            <p>A full e-commerce store — product catalogue, cart, checkout, and the admin behind it — built to turn browsers into buyers, not just to look good.</p>
+            <div class="rec-role"><b>Role:</b> Full-stack — storefront + admin</div>
+            <a class="rec-link" href="https://mjinicollection.com" target="_blank" rel="noopener">mjinicollection.com ↗</a>
+          </div>
+          <div class="rec-detail">
+            <p class="feat-h">What it does</p>
+            <ul class="feats">
+              <li>Storefront with product catalogue &amp; detail pages</li>
+              <li>Cart and a complete, conversion-focused checkout</li>
+              <li>Admin for products, orders &amp; inventory</li>
+              <li>Built to convert — browsers into buyers</li>
+            </ul>
+            <p class="feat-h">Stack</p>
+            <div class="stack"><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Node.js</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 Patampoa -->
+      <article class="rec glass reveal" style="--rec-accent: var(--live);">
+        <div class="rec-head">
+          <span class="rec-idx">02</span>
+          <div>
+            <h3 class="rec-title">Patampoa</h3>
+            <span class="rec-cat">Dating platform · web + app</span>
+          </div>
+          <span class="rec-status"><span class="pill live">Live</span></span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-overview">
+            <p>An international dating platform on web and native mobile — profiles, matching, real-time chat, video calling and live streaming — built for genuine connection across 195+ countries and 13 languages, not endless swiping.</p>
+            <div class="rec-role"><b>Role:</b> Full-stack + mobile + real-time A/V</div>
+            <a class="rec-link" href="https://patampoaglobal.com" target="_blank" rel="noopener">patampoaglobal.com ↗</a>
+          </div>
+          <div class="rec-detail">
+            <p class="feat-h">What it does</p>
+            <ul class="feats">
+              <li>Profiles &amp; matching across 195+ countries</li>
+              <li>Real-time 1:1 chat with moderation</li>
+              <li>Video calling &amp; live streaming (Agora RTC)</li>
+              <li>Payments via M-Pesa &amp; cards (PesaPal)</li>
+              <li>13-language localisation (i18next)</li>
+              <li>Android app (Capacitor) + installable PWA</li>
+            </ul>
+            <p class="feat-h">Stack</p>
+            <div class="stack"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Supabase</span><span class="tag">Agora</span><span class="tag">PesaPal</span><span class="tag">Capacitor</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 Cyberforge -->
+      <article class="rec glass reveal" style="--rec-accent: var(--oss);">
+        <div class="rec-head">
+          <span class="rec-idx">03</span>
+          <div>
+            <h3 class="rec-title">Cyberforge</h3>
+            <span class="rec-cat">AI security · Kali Linux</span>
+          </div>
+          <span class="rec-status"><span class="pill oss">Open source</span></span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-overview">
+            <p>An AI-powered pentesting and vulnerability scanner for Kali Linux. Describe the objective in plain English and an LLM agent selects and chains the right tools, running automated workflows until the goal is met. Built for authorised security testing.</p>
+            <div class="rec-role"><b>Role:</b> AI agent design + tool orchestration</div>
+            <a class="rec-link" href="https://github.com/tysonmulwa/cyberforge" target="_blank" rel="noopener">github.com/tysonmulwa/cyberforge ↗</a>
+          </div>
+          <div class="rec-detail">
+            <p class="feat-h">What it does</p>
+            <ul class="feats">
+              <li>Plain-English objective → autonomous plan</li>
+              <li>Agent selects &amp; chains the right tools</li>
+              <li>Orchestrates nmap, sqlmap, hydra, gobuster, nikto, theHarvester</li>
+              <li>Runs multi-step workflows until the goal is met</li>
+              <li>Scoped to authorised testing on Kali Linux</li>
+            </ul>
+            <p class="feat-h">Stack</p>
+            <div class="stack"><span class="tag">Python</span><span class="tag">Bash</span><span class="tag">LLM agents</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 Deriv Trading Bot -->
+      <article class="rec glass reveal" style="--rec-accent: var(--oss);">
+        <div class="rec-head">
+          <span class="rec-idx">04</span>
+          <div>
+            <h3 class="rec-title">Deriv Trading Bot</h3>
+            <span class="rec-cat">Fintech · trading</span>
+          </div>
+          <span class="rec-status"><span class="pill oss">Open source</span></span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-overview">
+            <p>A server-side trading bot for Deriv synthetic indices with a React dashboard, a live market-analysis feed, enforced risk safeguards, and honest, auditable accounting. It gives disciplined execution and truthful accounting — never a false statistical edge.</p>
+            <div class="rec-role"><b>Role:</b> Backend engine + trading-safety systems</div>
+            <a class="rec-link" href="https://github.com/tysonmulwa/Deriv-Trading-Bot" target="_blank" rel="noopener">github.com/tysonmulwa/Deriv-Trading-Bot ↗</a>
+          </div>
+          <div class="rec-detail">
+            <p class="feat-h">What it does</p>
+            <ul class="feats">
+              <li>Per-user engine: auto-reconnect, backoff, re-attach</li>
+              <li>Enforced risk rails: stop-loss/take-profit, circuit breaker, pacing</li>
+              <li>Demo vs real account verification before any trade</li>
+              <li>Idempotent settlement + buy reconciliation</li>
+              <li>Live feed: Wilder RSI, SMA, volatility, momentum</li>
+              <li>Optional AI commentary — advisory only, never executes</li>
+            </ul>
+            <p class="feat-h">Stack</p>
+            <div class="stack"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">tRPC</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">WebSocket</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 Hakikisha -->
+      <article class="rec glass reveal" style="--rec-accent: var(--live);">
+        <div class="rec-head">
+          <span class="rec-idx">05</span>
+          <div>
+            <h3 class="rec-title">Hakikisha</h3>
+            <span class="rec-cat">Marketplace · escrow</span>
+          </div>
+          <span class="rec-status"><span class="pill live">Live</span></span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-overview">
+            <p>A Kenyan escrow marketplace connecting buyers, sellers and riders in one place. Payment is held in escrow until goods are delivered and the buyer confirms they arrived as ordered. Trust, engineered in.</p>
+            <div class="rec-role"><b>Role:</b> Full-stack + escrow &amp; settlement logic</div>
+            <a class="rec-link" href="https://hakikisha.pages.dev" target="_blank" rel="noopener">hakikisha.pages.dev ↗</a>
+          </div>
+          <div class="rec-detail">
+            <p class="feat-h">What it does</p>
+            <ul class="feats">
+              <li>Three-sided: buyers, sellers &amp; riders in one place</li>
+              <li>Payment held in escrow until delivery</li>
+              <li>Funds release only when the buyer confirms</li>
+              <li>Dispute-resistant, trust-first flow</li>
+              <li>Built for the Kenyan market</li>
+            </ul>
+            <p class="feat-h">Stack</p>
+            <div class="stack"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Cloudflare</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 06 GODEYE -->
+      <article class="rec glass reveal" style="--rec-accent: var(--beta);">
+        <div class="rec-head">
+          <span class="rec-idx">06</span>
+          <div>
+            <h3 class="rec-title">GODEYE</h3>
+            <span class="rec-cat">Marketing · AI</span>
+          </div>
+          <span class="rec-status"><span class="pill beta">Private beta</span></span>
+        </div>
+        <div class="rec-body">
+          <div class="rec-overview">
+            <p>A social-media automation platform with built-in marketing strategy and AI visibility scanning for websites — made for creators and businesses that want to grow without living in their dashboards. AI agents handle content, images, video, SEO and publishing autonomously.</p>
+            <div class="rec-role"><b>Role:</b> Architecture + AI engine (Node + Python)</div>
+            <span class="rec-link disabled">Private beta — contact for access</span>
+          </div>
+          <div class="rec-detail">
+            <p class="feat-h">What it does</p>
+            <ul class="feats">
+              <li>Connect socials, set goals &amp; a posting schedule</li>
+              <li>AI agents write posts, generate images &amp; short videos</li>
+              <li>Autopilot scheduling: best-times, evergreen, A/B</li>
+              <li>SEO engine: crawl, audit, keyword clusters, meta &amp; JSON-LD</li>
+              <li>AI visibility scan across ChatGPT, Claude, Gemini &amp; Perplexity</li>
+              <li>Publishes to Meta, X, LinkedIn, Telegram, Discord &amp; Reddit</li>
+            </ul>
+            <p class="feat-h">Stack</p>
+            <div class="stack"><span class="tag">Next.js</span><span class="tag">NestJS</span><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Celery</span><span class="tag">PostgreSQL</span></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= APPROACH ================= -->
+<section class="band" id="approach" style="border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="eyebrow">How I build</p>
+        <h2>Complete, trustworthy, and actually shipped.</h2>
+      </div>
+    </div>
+    <div class="approach-grid">
+      <div class="ap glass reveal">
+        <div class="n">/01</div>
+        <h3>Whole products</h3>
+        <p>Storefront and the admin behind it. Trading engine and the dashboard. Not demos — the full thing, from database to the screen a real user touches.</p>
+      </div>
+      <div class="ap glass reveal">
+        <div class="n">/02</div>
+        <h3>Trust, engineered in</h3>
+        <p>Escrow that holds funds until delivery. Risk rails enforced in the execution path. Honest accounting. The safety is in the code, not the marketing.</p>
+      </div>
+      <div class="ap glass reveal">
+        <div class="n">/03</div>
+        <h3>AI where it earns its place</h3>
+        <p>Agents that chain real security tools, run marketing on autopilot, and scan AI visibility — used because they do the work, not because they're a buzzword.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap contact-inner">
+    <p class="eyebrow reveal">Contact</p>
+    <h2 class="reveal">Let's build something that <span class="hl">actually ships</span>.</h2>
+    <p class="reveal">Open to freelance and full-time work. If you've got a product that needs to go from idea to real users, I'd like to hear about it.</p>
+    <div class="contact-actions reveal">
+      <a class="btn btn-primary" href="mailto:tysonmulwa25@gmail.com">Email me <span class="arw">↗</span></a>
+      <a class="btn btn-wa" href="https://wa.me/254703739265?text=Hi%20Tyson%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.767.967-.94 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/tysonmulwa" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <span>© <span id="yr"></span> Tyson Mulwa</span>
+    <a class="to-top" href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<!-- floating WhatsApp -->
+<a class="wa-fab" href="https://wa.me/254703739265?text=Hi%20Tyson%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20talk." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.82 11.82 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.767.967-.94 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<script>
+(function () {
+  var root = document.documentElement;
+
+  /* ---------- theme ---------- */
+  var sun = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+  var moon = '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>';
+  var icon = document.getElementById('themeIcon');
+  function currentDark() {
+    var t = root.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function paintIcon() { icon.innerHTML = currentDark() ? sun : moon; }
+  paintIcon();
+  document.getElementById('themeBtn').addEventListener('click', function () {
+    root.setAttribute('data-theme', currentDark() ? 'light' : 'dark');
+    paintIcon();
+  });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(){
+    if (!root.getAttribute('data-theme')) paintIcon();
+  });
+
+  /* ---------- reveal on scroll ---------- */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ---------- global glitter field ---------- */
+  var canvas = document.getElementById('net');
+  var ctx = canvas.getContext('2d');
+  var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var nodes = [], raf = null;
+
+  function css(v){ return getComputedStyle(root).getPropertyValue(v).trim(); }
+  function hexToRgb(h){
+    h = h.replace('#','');
+    if (h.length === 3) h = h.split('').map(function(c){return c+c;}).join('');
+    var n = parseInt(h,16);
+    return [(n>>16)&255,(n>>8)&255,n&255];
+  }
+  var colA = [242,193,78], colB = [91,208,160];
+  function refreshColors(){
+    try { colA = hexToRgb(css('--node-a') || '#F2C14E'); colB = hexToRgb(css('--node-b') || '#5BD0A0'); } catch(e){}
+  }
+
+  function size() {
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function build() {
+    var count = Math.max(34, Math.min(80, Math.round(W * H / 22000)));
+    nodes = [];
+    for (var i = 0; i < count; i++) {
+      nodes.push({
+        x: Math.random() * W, y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.26, vy: (Math.random() - 0.5) * 0.26,
+        r: Math.random() * 1.7 + 0.9, c: Math.random() > 0.64 ? colB : colA
+      });
+    }
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    var DIST = 150;
+    for (var i = 0; i < nodes.length; i++) {
+      var a = nodes[i];
+      a.x += a.vx; a.y += a.vy;
+      if (a.x < -20) a.x = W + 20; if (a.x > W + 20) a.x = -20;
+      if (a.y < -20) a.y = H + 20; if (a.y > H + 20) a.y = -20;
+      for (var j = i + 1; j < nodes.length; j++) {
+        var b = nodes[j], dx = a.x - b.x, dy = a.y - b.y, d = Math.sqrt(dx*dx + dy*dy);
+        if (d < DIST) {
+          var o = (1 - d / DIST) * 0.60;
+          ctx.strokeStyle = 'rgba(' + a.c[0] + ',' + a.c[1] + ',' + a.c[2] + ',' + o.toFixed(3) + ')';
+          ctx.lineWidth = 0.8;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+    }
+    for (var k = 0; k < nodes.length; k++) {
+      var p = nodes[k];
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + p.c[0] + ',' + p.c[1] + ',' + p.c[2] + ',0.92)';
+      ctx.fill();
+    }
+    raf = requestAnimationFrame(draw);
+  }
+  function staticFrame(){ if (raf) { cancelAnimationFrame(raf); raf = null; } draw(); if (raf){ cancelAnimationFrame(raf); raf = null; } }
+
+  function start() {
+    refreshColors(); size(); build();
+    if (reduce) { draw(); if (raf){ cancelAnimationFrame(raf); raf = null; } }
+    else { if (raf) cancelAnimationFrame(raf); draw(); }
+  }
+  var rt;
+  window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function(){ size(); build(); }, 160); });
+  var mo = new MutationObserver(function(){
+    refreshColors();
+    for (var i=0;i<nodes.length;i++){ nodes[i].c = Math.random()>0.64?colB:colA; }
+  });
+  mo.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+
+  start();
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>
