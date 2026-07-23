@@ -482,28 +482,29 @@
         <div class="rec-head">
           <span class="rec-idx">03</span>
           <div>
-            <h3 class="rec-title">Cyberforge</h3>
-            <span class="rec-cat">AI security · Kali Linux</span>
+            <h3 class="rec-title">CyberForge</h3>
+            <span class="rec-cat">Security automation · pentesting</span>
           </div>
           <span class="rec-status"><span class="pill oss">Open source</span></span>
         </div>
         <div class="rec-body">
           <div class="rec-overview">
-            <p>An AI-powered pentesting and vulnerability scanner for Kali Linux. Describe the objective in plain English and an LLM agent selects and chains the right tools, running automated workflows until the goal is met. Built for authorised security testing.</p>
-            <div class="rec-role"><b>Role:</b> AI agent design + tool orchestration</div>
+            <p>A self-contained, full-stack security-automation platform that orchestrates 60+ tools into mission-based attack workflows. Define an objective and it selects, chains and runs the right tools — recon → auth → exploitation → post-exploit — streaming progress live to an in-browser terminal. Runs entirely locally; authorised testing only.</p>
+            <div class="rec-role"><b>Role:</b> Full-stack + security tooling &amp; orchestration</div>
             <a class="rec-link" href="https://github.com/tysonmulwa/cyberforge" target="_blank" rel="noopener">github.com/tysonmulwa/cyberforge ↗</a>
           </div>
           <div class="rec-detail">
             <p class="feat-h">What it does</p>
             <ul class="feats">
-              <li>Plain-English objective → autonomous plan</li>
-              <li>Agent selects &amp; chains the right tools</li>
-              <li>Orchestrates nmap, sqlmap, hydra, gobuster, nikto, theHarvester</li>
-              <li>Runs multi-step workflows until the goal is met</li>
-              <li>Scoped to authorised testing on Kali Linux</li>
+              <li>21+ scanners: XSS, SQLi, XXE, SSRF, SSTI, LFI, BOLA/IDOR, GraphQL, K8s, gRPC</li>
+              <li>WAF/CDN bypass: Cloudflare &amp; Akamai, TLS JA3/JA4 rotation, HTTP smuggling</li>
+              <li>Auth attacks: JWT, OAuth/OIDC/SAML, lockout-aware password spraying</li>
+              <li>Exploitation: race conditions, cloud &amp; subdomain takeover, cache poisoning</li>
+              <li>Distributed worker pool + SQLite job queue for parallel scanning</li>
+              <li>Real-time WebSocket progress, browser terminal &amp; safety gates on destructive ops</li>
             </ul>
             <p class="feat-h">Stack</p>
-            <div class="stack"><span class="tag">Python</span><span class="tag">Bash</span><span class="tag">LLM agents</span></div>
+            <div class="stack"><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">tRPC</span><span class="tag">Node.js</span><span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">Docker</span></div>
           </div>
         </div>
       </article>
@@ -520,22 +521,22 @@
         </div>
         <div class="rec-body">
           <div class="rec-overview">
-            <p>A server-side trading bot for Deriv synthetic indices with a React dashboard, a live market-analysis feed, enforced risk safeguards, and honest, auditable accounting. It gives disciplined execution and truthful accounting — never a false statistical edge.</p>
-            <div class="rec-role"><b>Role:</b> Backend engine + trading-safety systems</div>
+            <p>A server-side bot that trades Deriv synthetic indices from a live React dashboard — ~15,000 lines of TypeScript across a resilient WebSocket engine, real-time market analysis, and risk rails enforced in the execution path. Built for correct execution and truthful accounting, not a false edge: it's upfront that binary contracts are negative-EV by design.</p>
+            <div class="rec-role"><b>Role:</b> Full-stack — WebSocket engine + trading-safety systems</div>
             <a class="rec-link" href="https://github.com/tysonmulwa/Deriv-Trading-Bot" target="_blank" rel="noopener">github.com/tysonmulwa/Deriv-Trading-Bot ↗</a>
           </div>
           <div class="rec-detail">
             <p class="feat-h">What it does</p>
             <ul class="feats">
-              <li>Per-user engine: auto-reconnect, backoff, re-attach</li>
-              <li>Enforced risk rails: stop-loss/take-profit, circuit breaker, pacing</li>
-              <li>Demo vs real account verification before any trade</li>
-              <li>Idempotent settlement + buy reconciliation</li>
-              <li>Live feed: Wilder RSI, SMA, volatility, momentum</li>
-              <li>Optional AI commentary — advisory only, never executes</li>
+              <li>8 contract types across 15 synthetic markets</li>
+              <li>Auto-scans every market, trades the strongest signal in ~1&nbsp;ms</li>
+              <li>Instant tick-driven entry; up to 3 concurrent positions</li>
+              <li>Risk rails: stop-loss/take-profit, circuit breaker, pacing</li>
+              <li>Idempotent settlement + unknown-buy reconciliation</li>
+              <li>53 automated tests · CI · Dockerised</li>
             </ul>
             <p class="feat-h">Stack</p>
-            <div class="stack"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">tRPC</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">WebSocket</span></div>
+            <div class="stack"><span class="tag">TypeScript</span><span class="tag">React 19</span><span class="tag">tRPC</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">WebSocket</span></div>
           </div>
         </div>
       </article>
